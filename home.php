@@ -11,7 +11,7 @@
                     <div class="h-data-acoes"></div>
                 </header>
                 <?php foreach($tarefas as $tarefa) :?>
-                    <div class="tarefa">
+                    <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>">
                         <div class="tarefa-id"><?= $tarefa['id'] ?></div>
                         <div class="tarefa-ordem">
                             <span class="material-symbols-outlined icon">
