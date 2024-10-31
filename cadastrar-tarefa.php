@@ -1,8 +1,5 @@
 <?php
 
-include_once 'DAO/TarefaDAO.php';
-$tarefaDao = new TarefaDAO();
-$tarefas = $tarefaDao->listar();
 $dataAtual = date('Y-m-d');
 
 
@@ -10,7 +7,7 @@ if(isset($_GET['salvar'])){
     // Verifica se existe tarefa cadastrada no banco de dados
     if(count($tarefas) > 0){
         //se sim, retorna o número do campo ordem da última tarefa
-        $orem = $tarefas[count($tarefas)-1]['ordem'];
+        $ordem = $tarefas[count($tarefas)-1]['ordem'];
     }else{
         //caso contrário, ordem recebe 0
         $ordem = 0;
@@ -33,17 +30,28 @@ if(isset($_GET['salvar'])){
 
             $tarefaDao->inserir($dados);
             echo "Tarefa adicionada";
+            header("Location: index.php");
         }
     }
 }
 
 
 ?>
-
-
-<form action="?salvar=true" method="post">
-    <input type="text" name="nome">
-    <input type="number" name="custo" step="0.1">
-    <input type="date" name="data_limite" id="">
-    <button type="submit">Adicionar</button>
-</form>
+    <div id="form">
+        <h2>Adicionar Tarefa</h2>
+        <form action="?pg=cadastrar&salvar=true" method="post">
+            <div class="form-input">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div class="form-input">
+                <label for="custo">Custo:</label>
+                <input type="number" name="custo" step="0.1" id="custo" placeholder="ex: 1000,00">
+            </div>
+            <div class="form-input">
+                <label for="data_limite">Data Limite:</label>
+                <input type="date" name="data_limite" id="data_limite">
+            </div>
+            <button type="submit" class="btn-add" >Adicionar</button>
+        </form>
+    </div>

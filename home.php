@@ -1,4 +1,6 @@
 
+
+
 <div id="tabela-tarefas">
                 <header>
                     <div class="h-id">ID</div>
@@ -35,9 +37,7 @@
                 
 
                 <div class="add">
-                    <button class="btn-add">
-                        Adicionar Tarefa
-                    </button>
+                    <a href="?pg=cadastrar" class="btn-add">Adicionar Tarefa</a> 
                 </div>
 
             </div>

@@ -5,6 +5,10 @@
     font-family: "Quicksand", serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 body{
     background-color: #F5F5F5;
     color: #7FA1C3;
@@ -13,6 +17,7 @@ body{
 main{
     height: 100vh;
     min-width: 600px;
+    max-width: 600px;
     margin: auto;
     background-color: #F9F9F9;
     border-radius: 6px;
@@ -25,11 +30,23 @@ main{
     background-color: #FFF;
     border-radius: 20px;
     border: 1px solid #ECECEC;
+    padding-top: 10px;
 }
 #lista-tarefas header{
     text-align: center;
     margin-bottom: 20px;
 }
+
+#lista-tarefas header a{
+    color: #4e78a2;
+}
+#lista-tarefas header a:hover{
+    color: #4e78a2;
+    text-decoration: underline;
+}
+
+
+
 #tabela-tarefas{
     margin-bottom: 20px;
 }
@@ -84,20 +101,64 @@ main{
 
 .add{
     margin: 20px;
+    text-align: center;
 }
 
+
 .btn-add{
+    margin-top: 10px;
     width: 100%;
     border-radius: 6px;
     background-color: #6482AD;
     color: #FFF;
     font-size: 14px;
+    font-weight: 600;
     padding: 10px;
     border: none;
     cursor: pointer;
+    display: block;
 }
 
 .btn-add:hover{
     background-color: rgb(46, 142, 46);
     transition: 0.5s;
 }
+
+
+#form{
+    padding: 20px;
+}
+
+#form h2{
+    text-align: center;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 2px;
+}
+input{
+    background-color: #FBFBFB;
+    border-radius: 6px;
+    border: 1px solid #E6E6E6;
+    padding: 6px;
+    outline: 0;
+    color: #6482AD;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+input:focus{
+    border: 1px solid #7FA1C3;
+}
+
+::-webkit-input-placeholder {
+    color: #c1d4e7;
+ }

@@ -1,12 +1,16 @@
 <?php
 
+$pg = '';
+
+if(isset($_GET['pg'])){
+    $pg = $_GET['pg'];
+}
+
 include_once 'DAO/TarefaDAO.php';
 
 $tarefaDao = new TarefaDAO();
 $tarefas = $tarefaDao->listar();
-// echo "<pre>";
-// var_dump($tarefas->listar());
-// echo "</pre>";
+
 
 ?>
 
@@ -27,10 +31,19 @@ $tarefas = $tarefaDao->listar();
     <main>
         <div id="lista-tarefas">
             <header>
-                <h1>Lista de Tarefas</h1>
+                <h1><a href="index.php">Lista de Tarefas</a></h1>
             </header>
             
-            <?php include_once 'home.php'; ?>
+            <?php 
+                
+                switch($pg){
+                    case 'cadastrar':
+                        include 'cadastrar-tarefa.php';
+                        break;
+                    default:
+                        include 'home.php';
+                }
+            ?>
 
         </div>
     </main>
