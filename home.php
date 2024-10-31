@@ -43,20 +43,33 @@
             </div>
 
 
-            <dialog  id="dialogExcluir">
-                    
+            <dialog id="dialogExcluir">
+                   <div class="dialog-header">
+                        <div class="dialog-header-titulo">
+                            <h4>REMOVER TAREFA</h4>
+                        </div>
+                        <span class="material-symbols-outlined close" onclick="closeDialog()">
+                            disabled_by_default
+                        </span>
+                   </div>
+                   <div id="dialog-conteudo">
+
+                   </div>
             </dialog>
 
 
 <script>
     const dialogExcluir = document.getElementById('dialogExcluir');
+    const dialogConteudo = document.getElementById('dialog-conteudo');
     
     function excluir(id){
         dialogExcluir.showModal();
-        dialogExcluir.innerHTML = `
+        dialogConteudo.innerHTML = `
         <p>Tem certeza que deseja remover a tarefa com<strong> id ${id} </strong>?</p>
-        <a href='index.php?excluir=true&id=${id}'>SIM</a>
-        <button onclick='closeDialog()'>Não</button>
+        <div class='dialog-btn'>
+            <a href='index.php?excluir=true&id=${id}' class='btn-confirmar sim'>Sim</a>
+            <a href='#' class='btn-confirmar nao' onclick='closeDialog()'>Não</a>
+        </div>
         `;
     }
 
