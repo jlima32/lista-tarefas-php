@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -15,65 +16,89 @@
             <header>
                 <h1>Lista de Tarefas</h1>
             </header>
-            <table id="tabela-tarefas">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th></th>
-                        <th>Nome</th>
-                        <th>Custo</th>
-                        <th>Data Limite</th>
-                        <th></th>
-                    </tr>
-                </thead>
+            <div id="tabela-tarefas">
+                <header>
+                    <div class="h-id">ID</div>
+                    <div class="h-ordem"></div>
+                    <div class="h-nome">Nome</div>
+                    <div class="h-custo">Custo</div>
+                    <div class="h-data-limite">Data Limite</div>
+                    <div class="h-data-acoes"></div>
+                </header>
+                <div class="tarefa">
+                    <div class="tarefa-id">1</div>
+                    <div class="tarefa-ordem">
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_up
+                        </span>
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_down
+                        </span>
+                    </div>
+                    <div class="tarefa-nome">Mão de Obra</div>
+                    <div class="tarefa-custo">R$ 995,00</div>
+                    <div class="tarefa-data-limite">30/12/2024</div>
+                    <div class="tarefa-acoes">
+                        <span class="material-symbols-outlined icon edit">
+                            edit_square
+                        </span>
+                        <span class="material-symbols-outlined icon delete">
+                            delete
+                        </span>
+                    </div>
+                </div>
+                <div class="tarefa acima">
+                    <div class="tarefa-id">2</div>
+                    <div class="tarefa-ordem">
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_up
+                        </span>
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_down
+                        </span>
+                    </div>
+                    <div class="tarefa-nome">Serviços Gerais</div>
+                    <div class="tarefa-custo">R$ 132.325,00</div>
+                    <div class="tarefa-data-limite">30/05/2024</div>
+                    <div class="tarefa-acoes">
+                        <span class="material-symbols-outlined icon edit">
+                            edit_square
+                        </span>
+                        <span class="material-symbols-outlined icon delete">
+                            delete
+                        </span>
+                    </div>
+                </div>
+                <div class="tarefa">
+                    <div class="tarefa-id">3</div>
+                    <div class="tarefa-ordem">
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_up
+                        </span>
+                        <span class="material-symbols-outlined icon">
+                            keyboard_arrow_down
+                        </span>
+                    </div>
+                    <div class="tarefa-nome">Limpeza</div>
+                    <div class="tarefa-custo">R$ 500,00</div>
+                    <div class="tarefa-data-limite">12/06/2024</div>
+                    <div class="tarefa-acoes">
+                        <span class="material-symbols-outlined icon edit">
+                            edit_square
+                        </span>
+                        <span class="material-symbols-outlined icon delete">
+                            delete
+                        </span>
+                    </div>
+                </div>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <button>^</button>
-                            <button>.</button>
-                        </td>
-                        <td>Mão de Obra</td>
-                        <td>R$ 2.500,00</td>
-                        <td>30/12/2024</td>
-                        <td>
-                            <button>editar</button>
-                            <button>excluir</button>
-                        </td>
-                    </tr>
+                <div class="add">
+                    <button class="btn-add">
+                        Adicionar Tarefa
+                    </button>
+                </div>
 
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <button>^</button>
-                            <button>.</button>
-                        </td>
-                        <td>Teste Serviço</td>
-                        <td>R$ 11.500,00</td>
-                        <td>30/06/2025</td>
-                        <td>
-                            <button>editar</button>
-                            <button>excluir</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <button>^</button>
-                            <button>.</button>
-                        </td>
-                        <td>Serviços Externos</td>
-                        <td>R$ 500,00</td>
-                        <td>30/11/2024</td>
-                        <td>
-                            <button>editar</button>
-                            <button>excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            </div>
 
         </div>
     </main>
