@@ -5,6 +5,7 @@ $tarefaDao = new TarefaDAO();
 $tarefas = $tarefaDao->listar();
 $dataAtual = date('Y-m-d');
 
+
 if(isset($_GET['salvar'])){
     // Verifica se existe tarefa cadastrada no banco de dados
     if(count($tarefas) > 0){
