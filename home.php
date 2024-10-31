@@ -92,6 +92,8 @@
         const tarefaAnterior = tarefa.previousElementSibling
 
         tarefa.parentNode.insertBefore(tarefa,tarefaAnterior);
+
+        atualizaBotoes();
     }
 
     function moveDown(button){
@@ -104,8 +106,23 @@
         const proximaTarefa = tarefa.nextElementSibling;
         
         tarefa.parentNode.insertBefore(proximaTarefa, tarefa);
-        
 
+        atualizaBotoes();
     }
+
+    function atualizaBotoes(){
+        const tarefas = document.querySelectorAll('.tarefa');
+
+        tarefas.forEach((tarefa, i) => {
+            const upButton = tarefa.querySelector('.btn-up');
+            const downButton = tarefa.querySelector('.btn-down');
+            
+            upButton.style.visibility = i === 0 ? 'hidden' : 'visible';
+            downButton.style.display = i === tarefas.length - 1 ? 'none' : 'inline-block';
+        });
+    }
+
+    atualizaBotoes();
+
 </script>
 
