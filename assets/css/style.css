@@ -219,15 +219,19 @@ input:focus{
     transition: 0.4s;
   }
 
-  .btn-up, .btn-down{
+  .btn-up, .btn-down, .btn-edit{
     background-color: transparent;
     border: 0;
     cursor: pointer;
     color: #d6d6d7;
   }
 
+
+
   .btn-up:hover, .btn-down:hover{
     color: #4e78a2;
     transition: 0.3s;
   }
+
+
   
