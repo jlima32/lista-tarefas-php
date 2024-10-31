@@ -29,4 +29,13 @@ class TarefaDAO
         $stmt->execute();
     }
 
+    public function excluir($id)
+    {
+        $sql = "DELETE FROM tarefas WHERE id = ?";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1,$id);
+        $stmt->execute();
+        
+    }
+
 }

@@ -28,7 +28,7 @@
                             <span class="material-symbols-outlined icon edit">
                                 edit_square
                             </span>
-                            <span class="material-symbols-outlined icon delete">
+                            <span class="material-symbols-outlined icon delete" onclick="excluir(<?= $tarefa['id'] ?>)">
                                 delete
                             </span>
                         </div>
@@ -41,3 +41,27 @@
                 </div>
 
             </div>
+
+
+            <dialog  id="dialogExcluir">
+                    
+            </dialog>
+
+
+<script>
+    const dialogExcluir = document.getElementById('dialogExcluir');
+    
+    function excluir(id){
+        dialogExcluir.showModal();
+        dialogExcluir.innerHTML = `
+        <p>Tem certeza que deseja remover a tarefa com<strong> id ${id} </strong>?</p>
+        <a href='index.php?excluir=true&id=${id}'>SIM</a>
+        <button onclick='closeDialog()'>Não</button>
+        `;
+    }
+
+    function closeDialog(){
+        dialogExcluir.close();
+    }
+</script>
+

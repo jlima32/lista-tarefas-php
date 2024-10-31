@@ -1,19 +1,3 @@
-<?php
-
-$pg = '';
-
-if(isset($_GET['pg'])){
-    $pg = $_GET['pg'];
-}
-
-include_once 'DAO/TarefaDAO.php';
-
-$tarefaDao = new TarefaDAO();
-$tarefas = $tarefaDao->listar();
-
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,6 +19,22 @@ $tarefas = $tarefaDao->listar();
             </header>
             
             <?php 
+                include_once 'DAO/TarefaDAO.php';
+                
+                $tarefaDao = new TarefaDAO();
+                $tarefas = $tarefaDao->listar();
+
+                $pg = '';
+
+                if(isset($_GET['pg'])){
+                    $pg = $_GET['pg'];
+                }
+                
+                if(isset($_GET['excluir'])){
+                    $tarefaDao->excluir($_GET['id']);
+                    header("Location: index.php");
+                }
+            
                 
                 switch($pg){
                     case 'cadastrar':
