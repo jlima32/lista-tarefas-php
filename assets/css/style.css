@@ -218,3 +218,16 @@ input:focus{
     background-color: #e1e1e1;
     transition: 0.4s;
   }
+
+  .btn-up, .btn-down{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #d6d6d7;
+  }
+
+  .btn-up:hover, .btn-down:hover{
+    color: #4e78a2;
+    transition: 0.3s;
+  }
+  

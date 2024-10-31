@@ -14,12 +14,16 @@
                     <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>">
                         <div class="tarefa-id"><?= $tarefa['id'] ?></div>
                         <div class="tarefa-ordem">
-                            <span class="material-symbols-outlined icon">
-                                keyboard_arrow_up
-                            </span>
-                            <span class="material-symbols-outlined icon">
-                                keyboard_arrow_down
-                            </span>
+                            <button class="btn-up" onclick="moveUp(this)" >
+                                <span class="material-symbols-outlined icon">
+                                    keyboard_arrow_up
+                                </span>
+                            </button>
+                            <button class="btn-down" onclick="moveDown(this)" >
+                                <span class="material-symbols-outlined icon">
+                                    keyboard_arrow_down
+                                </span>
+                            </button>
                         </div>
                         <div class="tarefa-nome"><?= $tarefa['nome'] ?></div>
                         <div class="tarefa-custo">R$ <?= $tarefa['custo'] ?></div>
@@ -75,6 +79,33 @@
 
     function closeDialog(){
         dialogExcluir.close();
+    }
+
+    //Reordenar tarefas
+    function moveUp(button){
+        const tarefa = button.parentElement.parentElement;
+        
+        if (tarefa.previousElementSibling === null || !tarefa.previousElementSibling.classList.contains("tarefa")){
+            return;
+        }
+
+        const tarefaAnterior = tarefa.previousElementSibling
+
+        tarefa.parentNode.insertBefore(tarefa,tarefaAnterior);
+    }
+
+    function moveDown(button){
+        const tarefa = button.parentElement.parentElement;
+        
+        if(tarefa.nextElementSibling == null || !tarefa.nextElementSibling.classList.contains("tarefa")){
+            return;
+        }
+
+        const proximaTarefa = tarefa.nextElementSibling;
+        
+        tarefa.parentNode.insertBefore(proximaTarefa, tarefa);
+        
+
     }
 </script>
 
