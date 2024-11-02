@@ -19,6 +19,9 @@
             </header>
 
             <?php 
+
+                include_once 'status.php';
+
                 include_once 'DAO/TarefaDAO.php';
                 
                 $tarefaDao = new TarefaDAO();

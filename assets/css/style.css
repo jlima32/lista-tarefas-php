@@ -233,5 +233,21 @@ input:focus{
     transition: 0.3s;
   }
 
+  /* status */
+
+
+  .status-box{
+    width: auto;
+    height: auto;
+    padding: 10px;
+    line-height: 1.8;
+    border-radius: 5px;
+    margin: 0 10px 20px 10px;
+    background-color: #FEE;
+    border: 1px solid #EDD;
+    color: #A66;
+    text-align: center;
+    font-weight: 500;
+  }
 
   

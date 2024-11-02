@@ -15,25 +15,24 @@ if(isset($_GET['salvar'])){
 
     // Verifica se a data é menor que a data atual
     if($_POST['data_limite'] < $dataAtual){
-        echo "Informe uma data maior ou igual a data de hoje";
+        header("Location: index.php?status=data");
     }else{
         //Verifica se existe campos vazios
         if (!isset($_POST['nome']) || ($_POST['nome'] == '') || !isset($_POST['custo']) || ($_POST['custo'] == '') || !isset($_POST['data_limite'])){
-            echo "Preencha todos os campos";
+            header("Location: index.php?status=campos");
         }else{
             $row = $tarefaDao->verificarNome($_POST['nome']) > 0;
             if($row){
-                echo 'Nome de tarefa já cadastrado!';
+                header("Location: index.php?status=nome");
             }else{
                 $dados = array(
-                    'nome' => $_POST['nome'],
+                    'nome' => trim($_POST['nome']),
                     'custo' => $_POST['custo'],
                     'data_limite' => $_POST['data_limite'],
                     'ordem' => $ordem + 1
                 );
     
                 $tarefaDao->inserir($dados);
-                echo "Tarefa adicionada";
                 header("Location: index.php");
             }
         }
