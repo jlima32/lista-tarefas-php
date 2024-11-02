@@ -18,6 +18,10 @@ if(isset($_GET['salvar'])){
             header("Location: index.php");
             echo "Preencha todos os campos";
         }else{
+            $row = $tarefaDao->verificarNome($_POST['nome'], $_POST['id']) > 0;
+            if($row){
+                echo 'Nome de tarefa já cadastrado!';
+            }else{
             $dados = array(
                 'nome' => $_POST['nome'],
                 'custo' => $_POST['custo'],
@@ -28,6 +32,8 @@ if(isset($_GET['salvar'])){
             $tarefaDao->editar($dados);
             echo "Tarefa Editada";
             header("Location: index.php");
+            }
         }
     }
-}
+
+}   
