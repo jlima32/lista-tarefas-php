@@ -37,5 +37,15 @@ class TarefaDAO
         $stmt->execute();
         
     }
+    public function editar($dadosTarefa)
+    {
+        $sql = "UPDATE tarefas SET nome = ?, custo = ?, data_limite = ? WHERE id = ?";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1,$dadosTarefa['nome']);
+        $stmt->bindValue(2,$dadosTarefa['custo']);
+        $stmt->bindValue(3,$dadosTarefa['data_limite']);
+        $stmt->bindValue(4,$dadosTarefa['id']);
+        $stmt->execute();
+    }
 
 }

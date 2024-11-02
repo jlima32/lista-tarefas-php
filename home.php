@@ -74,7 +74,7 @@
                 </div>
 
                 <div id="dialog-form">
-                    <form action="?pg=cadastrar&salvar=true" method="post">
+                    <form action="editar-tarefa.php?salvar=true" method="post">
                     <div class="form-input">
                         <label for="nome">Nome:</label>
                         <input type="text" name="nome" id="nome">
@@ -87,6 +87,7 @@
                         <label for="data_limite">Data Limite:</label>
                         <input type="date" name="data_limite" id="data_limite">
                     </div>
+                    <input type="hidden" name="id" id="id">
                     <button type="submit" class="btn-add" >Editar</button>
                     </form>
                 </div>
@@ -119,15 +120,11 @@
                 document.getElementById('nome').value = button.getAttribute('data-nome');
                 document.getElementById('custo').value = button.getAttribute('data-custo');
                 document.getElementById('data_limite').value = button.getAttribute('data-limite');
+                document.getElementById('id').value = button.getAttribute('data-id');
                 dialogEditar.showModal();
             })
 
         })
-        
-
-
-        
-
     
     function closeDialog(){
         dialogExcluir.close();

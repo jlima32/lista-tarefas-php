@@ -17,7 +17,7 @@
             <header>
                 <h1><a href="index.php">Lista de Tarefas</a></h1>
             </header>
-            
+
             <?php 
                 include_once 'DAO/TarefaDAO.php';
                 
@@ -39,6 +39,9 @@
                 switch($pg){
                     case 'cadastrar':
                         include 'cadastrar-tarefa.php';
+                        break;
+                    case 'editar';
+                        include 'editar-tarefa.php';
                         break;
                     default:
                         include 'home.php';
