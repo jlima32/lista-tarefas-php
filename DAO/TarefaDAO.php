@@ -48,4 +48,20 @@ class TarefaDAO
         $stmt->execute();
     }
 
+    public function verificarNome($nome, $id = null)
+    {
+        $sql = "SELECT * FROM tarefas WHERE nome = ? ";
+        if ($id){
+            $sql .= "AND id != ?";
+        }
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(param: 1, value: $nome);
+        if($id){
+            $stmt->bindValue(param: 2, value: $id);
+        }
+
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
 }

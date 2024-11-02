@@ -21,17 +21,23 @@ if(isset($_GET['salvar'])){
         if (!isset($_POST['nome']) || ($_POST['nome'] == '') || !isset($_POST['custo']) || ($_POST['custo'] == '') || !isset($_POST['data_limite'])){
             echo "Preencha todos os campos";
         }else{
-            $dados = array(
-                'nome' => $_POST['nome'],
-                'custo' => $_POST['custo'],
-                'data_limite' => $_POST['data_limite'],
-                'ordem' => $ordem + 1
-            );
-
-            $tarefaDao->inserir($dados);
-            echo "Tarefa adicionada";
-            header("Location: index.php");
+            $row = $tarefaDao->verificarNome($_POST['nome']) > 0;
+            if($row){
+                echo 'Nome de tarefa já cadastrado!';
+            }else{
+                $dados = array(
+                    'nome' => $_POST['nome'],
+                    'custo' => $_POST['custo'],
+                    'data_limite' => $_POST['data_limite'],
+                    'ordem' => $ordem + 1
+                );
+    
+                $tarefaDao->inserir($dados);
+                echo "Tarefa adicionada";
+                header("Location: index.php");
+            }
         }
+        
     }
 }
 
