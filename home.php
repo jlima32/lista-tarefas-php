@@ -26,7 +26,7 @@
                             </button>
                         </div>
                         <div class="tarefa-nome"><?= $tarefa['nome'] ?></div>
-                        <div class="tarefa-custo" >R$ <?= $tarefa['custo'] ?></div>
+                        <div class="tarefa-custo" >R$ <?= number_format($tarefa['custo'], 2 , "," , ".") ?></div>
                         <div class="tarefa-data-limite"><?php $dataLimite =$tarefa['data_limite']; $dataFormatada = DateTime::createFromFormat('Y-m-d', $dataLimite); echo $dataFormatada->format('d-m-Y')  ?></div>
                         <div class="tarefa-acoes">
                             <button class="btn-edit" data-nome="<?php echo $tarefa['nome']; ?>" data-custo="<?php echo $tarefa['custo']; ?>" data-limite="<?php echo $tarefa['data_limite']; ?>"data-id="<?php echo $tarefa['id']; ?>">
