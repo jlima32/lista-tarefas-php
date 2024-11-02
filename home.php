@@ -1,6 +1,3 @@
-
-
-
 <div id="tabela-tarefas">
                 <header>
                     <div class="h-id">ID</div>
@@ -10,36 +7,39 @@
                     <div class="h-data-limite">Data Limite</div>
                     <div class="h-data-acoes"></div>
                 </header>
-                <?php foreach($tarefas as $tarefa) :?>
-                    <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>">
-                        <div class="tarefa-id"><?= $tarefa['id'] ?></div>
-                        <div class="tarefa-ordem">
-                            <button class="btn-up" onclick="moveUp(this)" >
-                                <span class="material-symbols-outlined icon">
-                                    keyboard_arrow_up
+                <div id="lista-tarefas-container">
+
+                    <?php foreach($tarefas as $tarefa) :?>
+                        <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>" data-id="<?php echo $tarefa['id']; ?>">
+                            <div class="tarefa-id"><?= $tarefa['id'] ?></div>
+                            <div class="tarefa-ordem">
+                                <button class="btn-up" onclick="moveUp(this)" >
+                                    <span class="material-symbols-outlined icon">
+                                        keyboard_arrow_up
+                                    </span>
+                                </button>
+                                <button class="btn-down" onclick="moveDown(this)" >
+                                    <span class="material-symbols-outlined icon">
+                                        keyboard_arrow_down
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="tarefa-nome"><?= $tarefa['nome'] ?></div>
+                            <div class="tarefa-custo" >R$ <?= number_format($tarefa['custo'], 2 , "," , ".") ?></div>
+                            <div class="tarefa-data-limite"><?php $dataLimite =$tarefa['data_limite']; $dataFormatada = DateTime::createFromFormat('Y-m-d', $dataLimite); echo $dataFormatada->format('d-m-Y')  ?></div>
+                            <div class="tarefa-acoes">
+                                <button class="btn-edit" data-nome="<?php echo $tarefa['nome']; ?>" data-custo="<?php echo $tarefa['custo']; ?>" data-limite="<?php echo $tarefa['data_limite']; ?>"data-id="<?php echo $tarefa['id']; ?>">
+                                    <span class="material-symbols-outlined icon edit">
+                                        edit_square
+                                    </span>
+                                </button>
+                                <span class="material-symbols-outlined icon delete" onclick="excluir(<?= $tarefa['id'] ?>)">
+                                    delete
                                 </span>
-                            </button>
-                            <button class="btn-down" onclick="moveDown(this)" >
-                                <span class="material-symbols-outlined icon">
-                                    keyboard_arrow_down
-                                </span>
-                            </button>
+                            </div>
                         </div>
-                        <div class="tarefa-nome"><?= $tarefa['nome'] ?></div>
-                        <div class="tarefa-custo" >R$ <?= number_format($tarefa['custo'], 2 , "," , ".") ?></div>
-                        <div class="tarefa-data-limite"><?php $dataLimite =$tarefa['data_limite']; $dataFormatada = DateTime::createFromFormat('Y-m-d', $dataLimite); echo $dataFormatada->format('d-m-Y')  ?></div>
-                        <div class="tarefa-acoes">
-                            <button class="btn-edit" data-nome="<?php echo $tarefa['nome']; ?>" data-custo="<?php echo $tarefa['custo']; ?>" data-limite="<?php echo $tarefa['data_limite']; ?>"data-id="<?php echo $tarefa['id']; ?>">
-                                <span class="material-symbols-outlined icon edit">
-                                    edit_square
-                                </span>
-                            </button>
-                            <span class="material-symbols-outlined icon delete" onclick="excluir(<?= $tarefa['id'] ?>)">
-                                delete
-                            </span>
-                        </div>
-                    </div>
-                <?php endforeach ?>
+                    <?php endforeach ?>
+                </div>
                 
 
                 <div class="add">
@@ -94,7 +94,7 @@
 
             </dialog>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
     
     //Modal Excluir
@@ -173,6 +173,19 @@
     }
 
     atualizaBotoes();
+
+    // Arrastando tarefas
+    const listaTarefas =document.getElementById('lista-tarefas-container');
+
+    new Sortable(listaTarefas, {
+        animation: 150,
+        ghostClass: 'lista-ghost',
+        onEnd: function (){
+            const novaOrdem = Array.from(listaTarefas.children).map((tarefa) => tarefa.dataset.id);
+            atualizaBotoes();
+
+        }
+    })
 
 </script>
 

@@ -74,6 +74,7 @@ main{
 
 .tarefa:hover{
     background-color: rgb(246, 252, 252);
+    cursor: grab;
 }
 
 .maior{
@@ -249,5 +250,10 @@ input:focus{
     text-align: center;
     font-weight: 500;
   }
+
+  .lista-ghost {
+    opacity: 0.5;
+    background-color: #f0f0f0;
+}
 
   
