@@ -9,9 +9,6 @@
 
 
             switch($status){
-                case 'data':
-                    echo "Informe uma data maior ou igual a data de hoje </div>";
-                break;
                 case 'nome':
                     echo 'Já existe uma tarefa cadastrada com esse nome. </div>';
                 break;
