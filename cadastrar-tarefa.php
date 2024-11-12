@@ -47,7 +47,7 @@ if(isset($_GET['salvar'])){
         <form action="?pg=cadastrar&salvar=true" method="post">
             <div class="form-input">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome">
+                <input autofocus type="text" name="nome" id="nome">
             </div>
             <div class="form-input">
                 <label for="custo">Custo:</label>
