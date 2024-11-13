@@ -10,7 +10,7 @@
                 <div id="lista-tarefas-container">
 
                     <?php foreach($tarefas as $tarefa) :?>
-                        <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>" data-id="<?php echo $tarefa['id']; ?>">
+                        <div class="tarefa <?php echo $tarefa['custo'] > 1000 ? 'maior' : ''; ?>" data-id="<?php echo $tarefa['id']; ?>" data-ordem="<?php echo $tarefa['ordem']; ?>">
                             <div class="tarefa-id"><?= $tarefa['id'] ?></div>
                             <div class="tarefa-ordem">
                                 <button class="btn-up" onclick="moveUp(this)" >
@@ -143,6 +143,15 @@
 
         tarefa.parentNode.insertBefore(tarefa,tarefaAnterior);
 
+        const atualizaTarefas = [
+            { id: tarefa.getAttribute('data-id'), ordem: parseInt(tarefaAnterior.getAttribute('data-ordem'))},
+            { id: tarefaAnterior.getAttribute('data-id'), ordem: parseInt(tarefa.getAttribute('data-ordem'))},
+        ];
+
+        tarefa.setAttribute('data-ordem', atualizaTarefas[0].ordem);
+        tarefaAnterior.setAttribute('data-ordem', atualizaTarefas[1].ordem);
+
+        atualizaBD(atualizaTarefas);
         atualizaBotoes();
     }
 
@@ -157,6 +166,16 @@
         
         tarefa.parentNode.insertBefore(proximaTarefa, tarefa);
 
+        const atualizaTarefas = [
+            { id: tarefa.getAttribute('data-id'), ordem: parseInt(proximaTarefa.getAttribute('data-ordem'))},
+            { id: proximaTarefa.getAttribute('data-id'), ordem: parseInt(tarefa.getAttribute('data-ordem'))},
+        ];
+
+        tarefa.setAttribute('data-ordem', atualizaTarefas[0].ordem);
+        proximaTarefa.setAttribute('data-ordem', atualizaTarefas[1].ordem);
+
+        atualizaBD(atualizaTarefas);
+
         atualizaBotoes();
     }
 
@@ -170,6 +189,18 @@
             upButton.style.visibility = i === 0 ? 'hidden' : 'visible';
             downButton.style.display = i === tarefas.length - 1 ? 'none' : 'inline-block';
         });
+    }
+
+    function atualizaBD(atualizaTarefas){
+        fetch('atualizar-ordem-tarefas.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(atualizaTarefas)
+        })
+        .then(response => response.json())
+        
     }
 
     atualizaBotoes();

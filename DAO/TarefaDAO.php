@@ -64,4 +64,23 @@ class TarefaDAO
         return $stmt->rowCount();
     }
 
+    public function atualizarOrdemTarefas()
+    {
+        $dadosTarefa = file_get_contents('php://input');
+        $atualizarTarefas = json_decode($dadosTarefa, true);
+
+        usort($atualizarTarefas, function($a,$b){
+            return $a['ordem'] <=> $b['ordem'];
+        });
+
+        $sql = "UPDATE tarefas SET ordem = ? WHERE id = ?";
+        $stmt = $this->conexao->prepare($sql);
+        foreach ($atualizarTarefas as $tarefa){
+            $stmt->execute([ 
+                $tarefa['ordem'],$tarefa['id']
+            ]);
+        }
+
+    }
+
 }
