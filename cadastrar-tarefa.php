@@ -40,15 +40,15 @@ if(isset($_GET['salvar'])){
         <form action="?pg=cadastrar&salvar=true" method="post">
             <div class="form-input">
                 <label for="nome">Nome:</label>
-                <input autofocus type="text" name="nome" id="nome">
+                <input autofocus type="text" name="nome" id="nome" required>
             </div>
             <div class="form-input">
                 <label for="custo">Custo:</label>
-                <input type="number" name="custo" step="0.1" id="custo" placeholder="ex: 1000,00">
+                <input type="number" name="custo" step="0.01" id="custo" placeholder="ex: 1000,00" required>
             </div>
             <div class="form-input">
                 <label for="data_limite">Data Limite:</label>
-                <input type="date" name="data_limite" id="data_limite">
+                <input type="date" name="data_limite" id="data_limite" required>
             </div>
             <button type="submit" class="btn-add" >Adicionar</button>
         </form>

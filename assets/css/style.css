@@ -17,7 +17,6 @@ body{
 main{
     height: 100vh;
     min-width: 600px;
-    max-width: 600px;
     margin: auto;
     background-color: #F9F9F9;
     border-radius: 6px;
