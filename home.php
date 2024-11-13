@@ -212,7 +212,11 @@
         animation: 150,
         ghostClass: 'lista-ghost',
         onEnd: function (){
-            const novaOrdem = Array.from(listaTarefas.children).map((tarefa) => tarefa.dataset.id);
+            const novaOrdem = Array.from(listaTarefas.children).map((tarefa, index) => ({
+            id: tarefa.dataset.id,
+            ordem: index + 1 
+        }));
+            atualizaBD(novaOrdem);
             atualizaBotoes();
 
         }
