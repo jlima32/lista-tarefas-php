@@ -55,9 +55,9 @@ class TarefaDAO
             $sql .= "AND id != ?";
         }
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(param: 1, value: $nome);
+        $stmt->bindValue(1, $nome);
         if($id){
-            $stmt->bindValue(param: 2, value: $id);
+            $stmt->bindValue(2, $id);
         }
 
         $stmt->execute();
